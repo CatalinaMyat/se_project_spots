@@ -8,6 +8,7 @@
   margin-right: 20px;
   height: 190px;
   width: 190px;
+  border-radius: 10px;
 }
 
 .profile__column {
@@ -121,7 +122,12 @@
     max-width: 288px;
   }
 
+  .profile__edit-btn {
+    margin: 0 auto;
+  }
+
   .profile__add-btn {
     margin: 0;
+    width: 288px;
   }
 }
