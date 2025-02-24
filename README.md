@@ -1,4 +1,4 @@
-# Spots - An image sharing site
+# Spots - Image Sharing Social Media
 
 An interactive social media webpage where users can add and remove photos, like photos of users, and edit their profile to express themselves in a creative matter.
 
