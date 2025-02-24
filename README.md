@@ -32,4 +32,4 @@ Key Features:
 
 This webpage is deployed to Github Pages
 
-- Deployment Link: https://github.com/CatalinaMyat/se_project_spots.git
+- Deployment Link: https://catalinamyat.github.io/se_project_spots/
