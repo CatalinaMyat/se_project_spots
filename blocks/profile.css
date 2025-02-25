@@ -8,7 +8,8 @@
   margin-right: 20px;
   height: 190px;
   width: 190px;
-  border-radius: 10px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .profile__column {
@@ -70,8 +71,8 @@
 
 .profile__add-btn {
   margin-left: auto;
-  margin-top: 138px;
-  width: 140px;
+  margin-top: auto;
+  width: 157px;
   height: 52px;
   background-color: #212121;
   color: #fcf5e5;
@@ -88,7 +89,7 @@
 }
 
 .profile__add-btn:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 627px) {

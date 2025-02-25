@@ -1,11 +1,13 @@
 .footer {
   display: flex;
-  padding: 34px 0 20px;
+  padding: 60px 0;
   display: flex;
   justify-content: center;
   text-align: center;
   margin: 0 auto;
   max-width: 100%;
-  width: 1280px;
-  height: 100%;
+}
+
+.footer__copyright {
+  margin: 0 auto;
 }
