@@ -17,7 +17,7 @@
 
 .card__title {
   font-size: 20px;
-  line-height: 24px;
+  line-height: 1.2;
   width: 100%;
   font-weight: 500;
   color: #212121;
@@ -53,5 +53,10 @@
   .card__title {
     max-width: 250px;
     font-size: 16px;
+  }
+
+  .card__like-btn {
+    width: 20px;
+    height: 18px;
   }
 }
