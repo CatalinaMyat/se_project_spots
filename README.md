@@ -33,3 +33,5 @@ Key Features:
 This webpage is deployed to Github Pages
 
 - Deployment Link: https://catalinamyat.github.io/se_project_spots/
+
+- Video link: https://drive.google.com/file/d/1FEA5-j9NS9vWabbKPc8lbk3yS5iRi8K2/view?usp=sharing
