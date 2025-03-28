@@ -32,17 +32,19 @@
   position: relative;
 }
 
-.modal__content_type_preview {
+.modal__preview-container {
   padding: 0;
   background-color: transparent;
+  position: relative;
 }
 
 .modal__image {
-  width: 100%;
-  object-fit: contain;
   max-width: 80vw;
   max-height: 80vh;
-  border-radius: 8px;
+  object-fit: contain;
+  display: block;
+  margin: 40px auto 0; /* 👈 pushes image down to leave space for close button */
+  border-radius: 12px;
 }
 
 .modal__close-btn {
@@ -62,10 +64,10 @@
   background-image: url(../images/cross.svg);
 }
 
-.modal__close_type_preview {
+.modal__close-btn_type_preview {
   background-image: url("../images/close-light.svg");
-  top: 0;
-  right: -52.5px;
+  top: 40px;
+  right: -55px;
   opacity: 1;
 }
 
