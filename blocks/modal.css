@@ -127,6 +127,11 @@
   color: #fcf5e5;
 }
 
+.modal__submit-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .modal__submit-btn_disabled {
   background-color: #212121;
   color: #fcf5e5;

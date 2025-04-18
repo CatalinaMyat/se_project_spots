@@ -124,11 +124,12 @@ profileEditButton.addEventListener("click", () => {
     [editModalNameInput, editModalDescriptionInput],
     settings
   );
-  disableButton(cardSubmitBtn, settings);
   openModal(editModal);
 });
 
 cardModalBtn.addEventListener("click", () => {
+  resetValidation(cardFormElement, [cardNameInput, cardLinkInput], settings);
+  disableButton(cardSubmitBtn, settings);
   openModal(cardModal);
 });
 
@@ -139,9 +140,26 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(popup));
 });
 
+[editModal, cardModal, previewModal].forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 initialCards.forEach((item) => {
   renderCard(item, "append");
+});
+
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
 });
