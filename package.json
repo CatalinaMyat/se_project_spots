@@ -4,6 +4,8 @@
   "description": "An interactive social media webpage where users can add and remove photos, like photos of users, and edit their profile to express themselves in a creative matter.",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +24,7 @@
     "@babel/preset-env": "^7.27.2",
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
