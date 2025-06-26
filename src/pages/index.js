@@ -1,11 +1,20 @@
-import { enableValidation, settings } from "../scripts/validation.js";
+import {
+  enableValidation,
+  settings,
+  disableButton,
+  resetValidation,
+} from "../scripts/validation.js";
 import "./index.css";
 import logo from "../images/logo.svg";
 import avatarFallback from "../images/avatar.jpg";
 import pencil from "../images/pencil.svg";
 import plus from "../images/plus.svg";
 import Api from "../utils/Api.js";
-import { setButtonText } from "../utils/helpers.js";
+import {
+  setButtonText,
+  renderLoading,
+  handleSubmit,
+} from "../utils/helpers.js";
 
 let currentUserId = null;
 let selectedCard = null;
@@ -86,10 +95,10 @@ function getCardElement(data) {
   });
 
   if (
-    Array.isArray(data.likes) &&
+    Array.isArray(data.isLiked) &&
     data.likes.some((user) => user._id === currentUserId)
   ) {
-    cardLikeBtn.classList.add("card__like-btn_is-active");
+    cardLikeBtn.classList.add("card__like-btn_liked");
   }
 
   return cardTemplate;
@@ -102,23 +111,20 @@ function renderCard(data, method = "prepend") {
 
 // ---------- HANDLERS ----------
 function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-  const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true, "Save", "Saving...");
-  api
-    .editUserInfo({
-      name: editModalNameInput.value,
-      about: editModalDescriptionInput.value,
-    })
-    .then((data) => {
-      profileName.textContent = data.name;
-      profileDescription.textContent = data.about;
-      closeModal(editModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(submitBtn, false, "Save", "Saving...");
-    });
+  function makeRequest() {
+    return api
+      .editUserInfo({
+        name: editModalNameInput.value,
+        about: editModalDescriptionInput.value,
+      })
+      .then((data) => {
+        profileName.textContent = data.name;
+        profileDescription.textContent = data.about;
+        closeModal(editModal);
+      });
+  }
+
+  handleSubmit(makeRequest, evt, "Saving...");
 }
 
 function handleAddCardSubmit(evt) {
@@ -137,17 +143,7 @@ function handleAddCardSubmit(evt) {
   api
     .addCard({ name, link })
     .then((data) => {
-      const isDuplicate = Array.from(document.querySelectorAll(".card")).some(
-        (card) => {
-          const title = card.querySelector(".card__title")?.textContent.trim();
-          const image = card.querySelector(".card__image")?.getAttribute("src");
-          return title === data.name && image === data.link;
-        }
-      );
-
-      if (!isDuplicate) {
-        renderCard(data, "prepend");
-      }
+      renderCard(data, "prepend");
 
       cardFormElement.reset();
       closeModal(cardModal);
@@ -190,11 +186,11 @@ function handleAvatarSubmit(evt) {
 }
 
 function handleLike(evt, cardId) {
-  const likeBtn = evt.target;
-  const isLiked = likeBtn.classList.contains("card__like-btn_is-active");
+  const likeBtn = evt.currentTarget;
+  const isLiked = likeBtn.classList.contains("card__like-btn_liked");
   api
     .changeLikeStatus(cardId, isLiked)
-    .then(() => likeBtn.classList.toggle("card__like-btn_is-active"))
+    .then(() => likeBtn.classList.toggle("card__like-btn_liked"))
     .catch(console.error);
 }
 

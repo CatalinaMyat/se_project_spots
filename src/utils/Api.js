@@ -13,10 +13,18 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+  _request(endpoint, options = {}) {
+    const finalOptions = {
       headers: this._headers,
-    }).then(this._checkResponse);
+      ...options,
+    };
+
+    const url = `${this._baseUrl}${endpoint}`;
+    return fetch(url, finalOptions).then(this._checkResponse);
+  }
+
+  getUserInfo() {
+    return this._request("/users/me");
   }
 
   getAppInfo() {
@@ -24,9 +32,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request("/cards");
   }
 
   addCard({ name, link }) {
@@ -57,24 +63,14 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   changeLikeStatus(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 }
 

@@ -11,6 +11,7 @@
   border-radius: 10%;
   overflow: hidden;
   cursor: pointer;
+  margin-bottom: 12px;
 }
 
 .profile__avatar {
@@ -177,8 +178,8 @@
 
   .profile__avatar {
     margin: 0 0 12px;
-    height: 80px;
-    width: 80px;
+    height: 100%;
+    width: 100%;
   }
 
   .profile__column {
@@ -194,6 +195,7 @@
 
   .profile__description {
     margin: 0 0 32px;
+    font-size: 16px;
     max-width: 288px;
   }
 
