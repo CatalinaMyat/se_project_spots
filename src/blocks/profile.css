@@ -4,18 +4,86 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
+.profile__avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 10%;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
 .profile__avatar {
-  margin-right: 20px;
-  height: 190px;
-  width: 190px;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+.profile__avatar-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border: none;
+  padding: 0;
+  padding-bottom: 8px;
+  color: white;
+  font-size: 12px;
+  gap: 6px;
+  text-align: center;
+}
+
+.profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+  opacity: 1;
+}
+
+.profile__pencil-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.profile__avatar-btn img {
+  width: 12px;
+  height: 12px;
+  margin-bottom: 4px;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  color: white;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+#delete-modal .modal__container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+#delete-modal .modal__submit-btn {
+  margin-right: 10px;
 }
 
 .profile__column {
   display: flex;
   flex-direction: column;
   max-width: 420px;
+  margin-left: 10px;
 }
 
 .profile__name {
@@ -101,10 +169,17 @@
     padding-top: 20px;
   }
 
+  .profile__add-btn {
+    visibility: visible;
+  }
+
+  /* TODO - set content of ::after element to "" */
+  /* TODO - finish mobile avatar button styles */
+
   .profile__avatar {
     margin: 0 0 12px;
-    height: 80px;
-    width: 80px;
+    height: 100%;
+    width: 100%;
   }
 
   .profile__column {
@@ -120,6 +195,7 @@
 
   .profile__description {
     margin: 0 0 32px;
+    font-size: 16px;
     max-width: 288px;
   }
 
